@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 const pageTitle = "About Me";
 
 const identity = {
@@ -13,6 +15,7 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "navy";
 ---
 
 
@@ -27,19 +30,32 @@ const goal = 3;
 </ul>
 <p>My skills are:</p>
 <ul>
-  {skills.map((skill) => <li>{skill}</li>)}
+  {skills.map((skill) => <li class="skill">{skill}</li>)}
 </ul>
 {happy && <p>I am happy to be learning Astro!</p>}
 
 {finished && <p>I finished this tutorial!</p>}
 
 {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-</body><html lang="en">
+</body>
+<html lang="en">
   <head>
     
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Astro</title>
+    <title>Astro
+    </title>
+     <style define:vars={{skillColor}}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: green;
+    color: var(--skillColor);
+    font-weight: bold;
+  }
+</style>
     <title>{pageTitle}</title>
   </head>
   <body>
@@ -52,5 +68,6 @@ const goal = 3;
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
 
     <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+    <Footer />
   </body>
 </html>
